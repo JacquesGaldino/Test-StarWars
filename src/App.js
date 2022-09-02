@@ -5,24 +5,36 @@ import Logo from '../src/assets/logo.png'
 export default function App() {
   return (
     <body>
-      <img src={Logo} alt="Star Wars"/>
-      <div className="navbar"> 
-        <nav>
-          <Link to="/" >Home</Link> |{" "}
-          <Link to="/filmes">Filmes</Link> |{" "}
-          <Link to="/personagens">Personagens</Link> |{" "}
-          <Link to="/planetas">Planetas</Link> |{" "}
-          <Link to="/especies">Especies</Link> 
-        </nav>
-      </div>
+      
+      <section className="header">
+        <section className="image">
+          <img src={Logo} alt="Star Wars"/>
+        </section>
+                
+        <section className="navbar">
+          <section className="link">
+            <Link to="/" >Home</Link>
+          </section>
+          <section className="link">
+            <Link to="/filmes">Filmes</Link>
+          </section>
+          <section className="link">
+            <Link to="/personagens">Personagens</Link>
+          </section>
+          <section className="link">
+            <Link to="/planetas">Planetas</Link> 
+          </section>
+          <section className="link">
+            <Link to="/especies">Especies</Link> 
+          </section>    
+        </section>
+      </section>
+      <main>
+        <section className="intro">
+          <h1>Página Principal</h1>
+        </section>
+      </main>
 
-      <h1>Página Principal</h1>
-
-      <div className="container">
-        <h3>Em Obras</h3>
-      </div>
-
-    </body>
-    
+    </body> 
   );
 }

@@ -7,50 +7,72 @@ export default function Especies() {
     
     const [especies, setEspecies] = useState([]);
 
-    useEffect(() => {
+    useEffect (() => {
         async function fetchData() {
-          const response = await fetch(`https://swapi.dev/api/species/?format=json`)
-          const data = await response.json();
-      
-          setEspecies(data.results);
-   
+          
+            let results = []
+            let data = null
+            for (var i = 1; i < 5; i++) {
+              let rep = await fetch(`https://swapi.dev/api/species/?format=json&page=${i}`)
+              data = await rep.json()
+              data.results.map(item => results.push(item));
+          
         }
         
-        fetchData();
-      }, []);
+        setEspecies(results);
+      } 
+
+      fetchData ()
+    }, []);
     
-      return (
+    return (
         <body>
-            <img src={Logo} alt="Star Wars"/>
-            <div className="navbar">
-                <nav>
-                <Link to="/" >Home</Link> |{" "}
-                <Link to="/filmes">Filmes</Link> |{" "}
-                <Link to="/personagens">Personagens</Link> |{" "}
-                <Link to="/planetas">Planetas</Link> |{" "}
-                <Link to="/especies">Especies</Link> 
-                </nav>
-            </div>
-
-            <h1>Lista de Espécies</h1>
-
-            <div className="container">       
+            <section className="header">
+                <section className="image">
+                    <img src={Logo} alt="Star Wars"/>
+                </section>
+                
+                <section className="navbar">
+                    <section className="link">
+                        <Link to="/" >Home</Link>
+                    </section>
+                    <section className="link">
+                        <Link to="/filmes">Filmes</Link>
+                    </section>
+                    <section className="link">
+                        <Link to="/personagens">Personagens</Link>
+                    </section>
+                    <section className="link">
+                        <Link to="/planetas">Planetas</Link> 
+                    </section>
+                    <section className="link">
+                        <Link to="/especies">Especies</Link> 
+                    </section>    
+                </section>
+            </section>
+            
+            <main>
+                <section className="intro">
+                    <h1>Lista de Espécies</h1>
+                </section>
+                <section className="cards">
                 {especies.map((especies, i) => {
                     return (
-                        <div className="card" key={i}>
-                          <h2>{especies.name}</h2>
-                          <br></br>
-                          <h3>Média-Altura: {especies.average_height}</h3>
-                          <h3>Classificação: {especies.classification}</h3>
-                          <h3>Designação: {especies.designation}</h3>
-                          <h3>Cor-Pele: {especies.skin_colors}</h3>
-                        </div>
+                        <section className="card" key={i}>
+                            <section className="card-in"> 
+                                <h2>{especies.name}</h2>
+                                <br></br>
+                                <h3>Média-Altura: {especies.average_height}</h3>
+                                <h3>Classificação: {especies.classification}</h3>
+                                <h3>Designação: {especies.designation}</h3>
+                                <h3>Cor-Pele: {especies.skin_colors}</h3> 
+                            </section>                            
+                        </section>
                     )
                 })}
-            </div>
-            
+                </section>
+            </main>
         </body>
-       
     );
 }
 
