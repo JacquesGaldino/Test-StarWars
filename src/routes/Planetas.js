@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import './Geral.css';
 import Logo from '../assets/logo.png';
+import Loading from "./Loading";
 
 export default function Planetas() {
    
-    const [planeta, setPlaneta] = useState([]); 
+    const [planeta, setPlaneta] = useState([]);
+    const[removeLoading, setRemoveLoading] = useState (false) 
   
     useEffect (() => {
       async function fetchData() {
@@ -20,6 +22,7 @@ export default function Planetas() {
       }
       
       setPlaneta(results);
+      setRemoveLoading(true);
       
     } 
 
@@ -71,6 +74,7 @@ export default function Planetas() {
                         </section>
                     )
                 })}
+                { !removeLoading && <Loading />}
             </section>
         </main>
     </body>

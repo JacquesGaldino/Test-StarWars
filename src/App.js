@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import '../src/routes/Geral.css';
 import Logo from '../src/assets/logo.png'
+import vader from '../src/assets/vader.jpg'
 
 export default function App() {
   return (
@@ -31,7 +32,8 @@ export default function App() {
       </section>
       <main>
         <section className="intro">
-          <h1>Página Principal</h1>
+          <img src={vader} alt='Vader'/>
+          <h2>May the Force be with you!</h2>
         </section>
       </main>
 

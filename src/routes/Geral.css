@@ -146,3 +146,12 @@ section.cards section.card section.card-in {
   transform:perspective(800px)       rotateY(0deg);
   opacity:1;
 }
+
+.intro img {
+  width: 700px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 30px;
+}

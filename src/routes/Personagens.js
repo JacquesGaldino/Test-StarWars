@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import './Geral.css';
 import Logo from '../assets/logo.png';
+import Loading from "./Loading";
 
 export default function Personagens() {
     
     const [personagens, setPersonagens] = useState([]);  
+    const[removeLoading, setRemoveLoading] = useState (false)
     
     useEffect (() => {
         async function fetchData() {
@@ -20,6 +22,7 @@ export default function Personagens() {
         }
         
             setPersonagens(results);
+            setRemoveLoading(true);
       } 
 
       fetchData ()
@@ -75,6 +78,7 @@ export default function Personagens() {
                             </section>
                         )
                     })}
+                    { !removeLoading && <Loading />}
                 </section>
             </main>
         </body>

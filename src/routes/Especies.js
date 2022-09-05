@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import './Geral.css';
 import Logo from '../assets/logo.png';
+import Loading from "./Loading";
 
 export default function Especies() {
     
     const [especies, setEspecies] = useState([]);
+    const[removeLoading, setRemoveLoading] = useState (false)
 
     useEffect (() => {
         async function fetchData() {
@@ -20,6 +22,7 @@ export default function Especies() {
         }
         
         setEspecies(results);
+        setRemoveLoading(true);
       } 
 
       fetchData ()
@@ -70,6 +73,7 @@ export default function Especies() {
                         </section>
                     )
                 })}
+                { !removeLoading && <Loading />}
                 </section>
             </main>
         </body>
